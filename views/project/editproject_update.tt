@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        ===
+        This comment should NOT be removed.
+
+        Charisma v2.0.0
+
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+    -->
+    <meta charset="utf-8">
+    <title>Free HTML5 Bootstrap Admin Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Muhammad Usman">
+
+    <!-- The styles -->
+    <link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="css/charisma-app.css" rel="stylesheet">
+    <link href='bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='css/jquery.noty.css' rel='stylesheet'>
+    <link href='css/noty_theme_default.css' rel='stylesheet'>
+    <link href='css/elfinder.min.css' rel='stylesheet'>
+    <link href='css/elfinder.theme.css' rel='stylesheet'>
+    <link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='css/uploadify.css' rel='stylesheet'>
+    <link href='css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+<script>
+var p_right;
+
+function clear_show_info(){
+    var info_name = document.getElementById("p_name").value;
+    var info_belong = document.getElementById("p_belong").value;
+    var info_member_g = document.getElementById("p_member").options;
+    var info_member = '';
+    for(var i=0;i<info_member_g.length;i++){
+        if( info_member_g[i].selected )
+        {
+            info_member += '<br>' + info_member_g[i].text;
+        }
+    }
+    
+    var info_alarm = '关';
+    if( document.getElementById("p_alarm").checked )
+    {
+        info_alarm =  '开';
+    }
+    
+    var info_desc = document.getElementById("p_desc").value;
+
+
+    p_right = '1';
+    if( ! info_name )
+    {
+        p_right = '';
+        info_name += '[ERROR]:项目名称为空';
+    }
+    if( ! info_belong )
+    {
+        p_right = '';
+        info_belong += '[ERROR]:项目归属为空';
+    }
+    if( ! info_member )
+    {
+        p_right = '';
+        info_member += '[ERROR]:项目成员为空';
+    }
+    if( ! info_desc )
+    {
+        p_right = '';
+        info_desc += '[ERROR]:项目描述为空';
+    }
+ 
+
+    var info = '项目名称：'+info_name
+          +'<br>项目归属：'+info_belong 
+          +'<br>项目成员：'+info_member 
+          +'<br>报警状态：'+info_alarm 
+          +'<br>项目描述：'+info_desc;
+    document.getElementById("show_info").innerHTML = info;
+ 
+ 
+    if( p_right  )
+    {
+        document.getElementById("submitid").style.display = "";
+    }
+    else
+    {
+        document.getElementById("submitid").style.display = "none";
+    }
+
+
+}
+function submitdata(){
+    if( p_right )
+    {
+        document.getElementById("formid").submit();
+    }
+}
+</script>
+</head>
+
+<body>
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        [% INCLUDE project/menu %]
+        <!-- left menu ends -->
+
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+</div>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i>修改项目</h2>
+
+               <div class="box-icon">
+               <a href="#" title="删除该项">
+                <i class="glyphicon glyphicon-trash"></i>
+               </a>
+                </div>
+
+            </div>
+            <div class="box-content">
+
+
+                <div class="alert alert-info">
+                <div class="control-group">
+                     <form class="form-inline" role="form" >
+                         <div class="form-group has-success has-feedback">
+
+                              
+                             <label class="control-label" for="inputSuccess4">项目名称:</label>
+                             <input type="text" id="name" name="name" value="[% resource.0 %]"><br>
+
+
+
+
+
+                            <br><label class="control-label" for="inputSuccess4">运维:</label>
+
+                           <div class="controls">
+                        <select data-placeholder="未知" id="ops" name="ops"  data-rel="chosen" style="width:150px;">
+                            <option value ="[% resource.6 %]">[% resource.6 %]</option>
+                            <option value=""></option>
+                            <option>cloudops</option>           
+                            <option>noops</option>
+                        </select>
+                         </div>
+
+  
+
+
+                             <br><label class="control-label" for="inputSuccess4">归属:</label>
+
+                    <div class="controls">
+                        <select data-placeholder="未知" id="belong" name="belong"  data-rel="chosen">
+  <option value ="[% resource.1 %]">[% resource.1 %]</option>
+                            <option value=""></option>
+                            <optgroup label="搜索">
+
+<option>图床</option>           
+<option>快照</option>
+<option>测试</option>
+<option>省流量</option>
+<option>网页搜索</option> 
+<option>移动搜索</option>
+<option>图片搜索</option>
+<option>地图搜索</option>
+<option>问答搜索</option>
+<option>良医搜索</option>
+<option>新闻搜索</option>
+<option>学术搜索</option>
+<option>小说搜索</option>
+<option>雷电搜索</option>
+<option>奇虎搜索</option>
+<option>视频搜索</option>
+<option>数据挖掘</option>
+<option>搜索蜘蛛</option>
+<option>以图搜图</option>
+<option>一级引擎</option>
+<option>二级引擎</option>
+<option>NLP相关</option>
+<option>逛街宝搜索</option>
+<option>搜索Onebox</option>
+<option>网页分析转码</option>
+<option>数据分析</option>
+<option>医疗服务</option>
+                            </optgroup>
+                            <optgroup label="安全">
+<option>云查杀</option>
+<option>网盾</option>
+<option>Hips</option>
+<option>专杀</option>
+<option>PC回扫</option>
+<option>手机回扫</option>
+<option>样本存储</option>
+<option>V5</option>
+<option>日志</option>
+<option>上传</option>
+<option>密钥</option>
+<option>安全VPN</option>
+                            </optgroup>
+
+                            <optgroup label="手机安全">
+<option>手机卫士</option>
+<option>云通讯录</option>
+<option>摇一摇</option>
+<option>手机长链接</option>
+<option>minos</option>
+                            </optgroup>
+
+                            <optgroup label="广告">
+<option>广告平台</option>
+<option>广告引擎</option>
+                            </optgroup>
+
+
+                            <optgroup label="北京时间">
+<option>北京时间-新闻</option>
+                            </optgroup>
+
+
+                            <optgroup label="CloudOPS">
+<option>监控</option>
+<option>CDX</option>
+                            </optgroup>
+
+<optgroup label="beacon">
+<option>beacon</option>
+</optgroup>
+                        </select>
+                    </div>
+
+                            <br><label class="control-label" for="member">项目组成员</label>
+
+                            <div class="controls">
+                                <select id="member" name="member" multiple  data-rel="chosen" >
+                                    [% FOREACH user = users %]
+                                    <option [% IF selecteds.${user.0} %]selected[% END %]>[% user.0 %]</option>
+                                    [% END %]
+                                </select>
+                            </div>
+
+
+                            <br><label class="control-label" for="opser">运维接口人</label>
+
+                            <div class="controls">
+                                <select id="opser" name="opser" multiple  data-rel="chosen" >
+                                    [% FOREACH user = users %]
+                                    <option [% IF selecteds_opser.${user.0} %]selected[% END %]>[% user.0 %]</option>
+                                    [% END %]
+                                </select>
+                            </div>
+
+
+                            <br><label class="control-label" for="dever">项目负责人</label>
+
+                            <div class="controls">
+                                <select id="dever" name="dever" multiple  data-rel="chosen" >
+                                    [% FOREACH user = users %]
+                                    <option [% IF selecteds_dever.${user.0} %]selected[% END %]>[% user.0 %]</option>
+                                    [% END %]
+                                </select>
+                            </div>
+
+
+                             <br><label class="control-label" for="inputSuccess4">报警开关:</label>
+
+                              <input type="radio" name="alarm" value="1" [% IF resource.3 %]checked[% END %] /> 开
+                              <input type="radio" name="alarm" value="0" [% IF ! resource.3 %]checked[% END %]/> 关
+
+                             <br><label class="control-label" for="inputSuccess4">描述:</label>
+                             <textarea class="autogrow" style="width: 100%;" id="desc" name="desc" >[% resource.4 %]</textarea>
+         
+                             <br><label class="control-label" for="inputSuccess4">hermes:</label>
+                             <input type="text" id="hermes" name="hermes" value="[% resource.5 %]"><br>
+  
+                             <input type="hidden" id="id" name="id" value="[% id %]" />
+			     <button type="submit" class="btn btn-default">提交</button>
+
+                         </div>
+                     </form>
+                </div>
+                </div>
+ 
+
+
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div><!--/row-->
+
+
+
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>提交?</h3>
+                </div>
+                <div class="modal-body">
+                    <a id="show_info" ></a>
+                </div>
+ 
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">关闭</a>
+                    <button id="submitid"  type="submit" class="btn btn-primary" onclick = "submitdata();" >提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!--/.fluid-container-->
+
+<!-- external javascript -->
+
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- library for cookie management -->
+<script src="js/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='bower_components/moment/min/moment.min.js'></script>
+<script src='bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='js/jquery.dataTables.min.js'></script>
+
+<!-- select or dropdown enhancer -->
+<script src="bower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="js/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="bower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="js/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="js/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="js/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="js/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="js/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="js/charisma.js"></script>
+
+
+</body>
+</html>

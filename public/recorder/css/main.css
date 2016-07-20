@@ -1,0 +1,213 @@
+/* main styles */
+
+body, table, tr, td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	FONT-FAMILY: 宋体;
+}
+
+table, tr, td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	FONT-FAMILY: 宋体;
+}
+
+body {
+	background-color: #FFFFFF;
+	background-repeat: repeat-y;
+}
+
+/* img title */
+#nav li {
+    display: inline;
+    list-style-type: none;
+}
+#nav li a:link,#nav li a:visited {
+    height: 17px;
+    font-size: 14px;
+    float:left;
+    margin-right:0px;
+    padding:5px 10px 5px 10px;
+    text-decoration: none;
+    color:#ECEDF3;
+    background:#005da0;
+    border-top:0px solid #fff;
+    border-right:0px solid #333;
+    border-bottom:0px solid #333;
+    border-left:0px solid #fff;
+}
+#nav li a:hover {
+    height: 17px;
+    font-size: 14px;
+    color:#fff;
+    background:#4881A9;
+    padding:5px 10px 5px 10px;
+    border-top:0px solid #333;
+    border-right:0px solid #fff;
+    border-bottom:0px solid #fff;
+    border-left:0px solid #333;
+}
+
+
+/* links */
+a{color:#005EAC}
+a:link.tj, a:visited.tj{color:#03617C}
+a:link.cdn, a:visited.cdn{color:#2140B5}
+a:link, a:visited{color:#005EAC;text-decoration:none}
+a:hover{color:#005EAC;text-decoration:underline}
+a.dark{color:#333}
+a.action{border-bottom:1px solid #d8dfea;display:block;padding:3px 9px;text-decoration:none}
+a.action:hover{background-color:#005EAC;color:#fff;text-decoration:none}
+
+
+.linkEditMain, .linkEditMain:visited, .linkEditMain:active {
+	color: blue;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.linkEditMain:hover {
+	color: blue;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.linkOverDark, .linkOverDark:visited, .linkOverDark:active {
+	color: white;
+	text-decoration: none;
+}
+
+.linkOverDark:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+/* text styles */
+
+.textError {
+	font-size: 16px;
+	font-weight: bold;
+	color: red;
+}
+
+.textInfo {
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+}
+
+.textHeader {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.textHeaderDark {
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.textSubHeaderDark, .textSubHeaderDark:visited {
+	font-size: 10px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.textArea {
+	font-size: 12px;
+}
+
+.textAreaNotes {
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.textEditTitle {
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.textMenuHeader {
+	color: #005da0;
+	background-color: #bdc7d8;
+	font-family: 宋体;
+	font-size: 13px;
+	font-weight: bold;
+}
+.textMenuItem {
+	background-color: #f5f5f5;
+	font-family: 宋体;
+	font-size: 12px;
+}
+
+.textMenuSubItem {
+	background-color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.textMenuItemSelected {
+	background-color: #E1E1E1;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.txtErrorTextBox {
+	border: 2px solid #ff0000;
+}
+
+/* tabs */
+td.tab {
+    border-top: 1px solid #999;
+    border-right: 1px solid #666;
+    border-left: 1px solid #999;
+    border-bottom: none;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+
+table.tabs      {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid #666;
+}
+
+
+@media print {
+	.noprint { display:none }
+}
+
+
+.window table {
+border:1px solid #8CB6DE;
+margin-top:1px;
+margin-bottom:2px;
+width:999px;
+}
+.window td {
+line-height:22px;
+}
+
+.windowConf table {
+border:1px solid #8CB6DE;
+margin-top:1px;
+margin-bottom:2px;
+width:900px;
+}
+
+.uploadwindow table {
+border:1px solid #8CB6DE;
+margin-top:1px;
+margin-bottom:2px;
+width:90%;
+}
+
+.sipt {color:#B0B0D0}
+.tracker {background-color: #D0D0D0; padding: 2px;color: #505000;font-weight: bold;font-size: 120%}
+.gangliaUp {background-color: #D0D0D0; padding: 2px;color: GREEN;font-weight: bold;font-size: 120%}
+.gangliaDown {background-color: RED; padding: 2px;color: BLACK;font-weight: bold;font-size: 120%}
+.nagiosUp {background-color: #D0D0D0; padding: 2px;color: RED;font-weight: normal;font-size: 120%}
+.nagiosDown {background-color: RED; padding: 2px;color: BLACK;font-weight: normal;font-size: 120%}
+
+label{vertical-align:middle}
+.checkbox{vertical-align:middle;}

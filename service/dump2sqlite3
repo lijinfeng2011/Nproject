@@ -1,0 +1,22 @@
+#!/home/s/ops/perl/bin/perl
+use strict;
+use warnings;
+
+use FindBin qw( $RealBin );
+use lib "$RealBin/../lib";
+use Dump;
+
+$| ++;
+
+my ( $dump, $i )= Dump->new( 
+
+    load => 
+    [ 
+        "select project.HERMES,resource.GROUP,resource.NODE,resource.EXTA from project,resource where project.ID=resource.PROJECTID  and project.HERMES is not null and resource.TYPE in ( 'host', 'lvs', 'domain', 'dns' )",
+         "select project.HERMES,'info','ops',OPS from project where hermes is not NULL" 
+    ],
+
+    map{ $_ => "$RealBin/../$_" }qw( conn data )
+);
+
+while(1) { printf "do(%d)...\n", ++$i; $dump->run(); sleep 3; }

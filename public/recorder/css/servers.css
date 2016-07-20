@@ -1,0 +1,96 @@
+div.title
+{
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+div.link
+{
+	text-align: center;
+	margin-bottom: 20px;
+}
+div.clear
+{
+	clear: both;
+}
+div.exa
+{
+	background-color: ivory;
+	//background: 0; /*for ie*/
+	border: 1px solid gray;
+	padding: 0 15px;
+	margin-bottom: 20px;
+}
+div.target
+{
+	margin: 20px 0 0 400px;
+	width: 100px;
+}
+div.target ul
+{
+	border: 1px solid gray;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-color: bisque;
+}
+div.target li
+{
+	padding-left: 4px;
+	cursor: pointer;
+}
+li.simpleon
+{
+	color: green;
+	font-weight: bold;
+}
+li.simpleoff
+{
+	color: red;
+	font-weight: bold;
+}
+li.advon
+{
+	background: url(../images/tick.png) 0 50%;
+}
+li.advoff
+{
+	background: url(../images/cross.png) 0 50%;
+}
+#targetall
+{
+	list-style: none;
+	background-color: #eee;
+}
+#targetall li
+{
+	background-repeat: no-repeat;
+	padding-left: 20px;
+}
+#thSelectColumn div.cmDiv
+{
+	display: inline;
+	background: none;
+	border: 0;
+}
+#thSelectColumn li.main
+{
+	padding: 0;
+	background: none;
+	width: 100%;
+	text-align: right;
+}
+#thSelectColumn li.main li
+{
+	text-align: left;
+	padding-right: 2px;
+}
+#thSelectColumn
+{
+	padding-right: 2px;
+	width: 10px;
+}
+#ulSelectColumn
+{
+	vertical-align: middle;
+}

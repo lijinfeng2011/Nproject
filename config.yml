@@ -1,0 +1,47 @@
+appname: "web"
+
+charset: "UTF-8"
+
+logger: "console"
+
+log: "debug"
+
+template: "template_toolkit"
+engines:
+  template_toolkit:
+    start_tag: '[%'
+    end_tag:   '%]'
+
+
+session: "YAML"
+session_dir: "/tmp/ns-dancer-sessions"
+
+plugins:
+  Ajax:
+      content_type: 'application/json'
+
+  Database:
+    driver: 'mysql'
+    database: 'ns_project'
+    host: 'mysql_ns_project'
+    port: 3306
+    username: 'root'
+    password: 'root'
+    connection_check_threshold: 30
+    dbi_params:
+        RaiseError: 0
+        AutoCommit: 1
+        on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'" ]
+    log_queries: 1
+  'Cache::CHI':
+    driver: Memory
+    global: 1
+
+
+
+loggin_addr: 'http://nproject.nices.net:9999/login'
+
+sso:
+  ref: 'http://login.nides.net:8080/?ref='
+  sid: 'http://login.nices.net:8080/info?sid='
+

@@ -1,0 +1,5 @@
+- "DBI:mysql:database=ns_project;host=mysql_ns_project"
+- root
+- root
+- 
+  RaiseError: 1

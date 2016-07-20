@@ -1,0 +1,15 @@
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">Main</li>
+                        <li><a class="ajax-link" href="/project/list"><i class="glyphicon glyphicon-align-justify"></i><span>项目列表</span></a></li>
+                        <li class="ajax-link"> <a href="/project/create"><i class="glyphicon glyphicon-plus"></i><span>新建项目</span></a> </li>
+                        <li><a class="ajax-link" href="/project/list_hermes"><i class="glyphicon glyphicon-align-justify"></i><span>Hermes</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>

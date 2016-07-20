@@ -1,0 +1,12 @@
+<html>
+  <body >
+    <h3 id="myH2">hermes: [% hermes %]</h3>
+
+     <h4 id="myH2">ssh:</h4>
+     <Iframe name="tt" src="http://.net:9922/cache/[% hermes %]@ssh" width="100%" height="300" scrolling="yes" frameborder="1"></iframe>
+     <h4 id="myH2">sys:</h4>
+     <Iframe name="tt" src="http://.net:9922/cache/[% hermes %]@sys" width="100%" height="300" scrolling="yes" frameborder="1"></iframe>
+     <h4 id="myH2">app:</h4>
+     <Iframe name="tt" src="http://.net:9922/cache/[% hermes %]@app" width="100%" height="300" scrolling="yes" frameborder="1"></iframe>
+  </body>
+</html> 

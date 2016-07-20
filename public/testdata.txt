@@ -1,0 +1,5 @@
+{"data":[{"office":"Edinburgh","position":"System Architect","name":"Tiger
+Nixon","start_date":"2011/04/25","extn":"5421","salary":"$320,800"},{"office":"Tokyo","position":"Accountant","name":"Garrett
+Winters","start_date":"2011/07/25","extn":"8422","salary":"$170,750"},{"office":"San
+Francisco","position":"Junior Technical Author","name":"Ashton
+Cox","start_date":"2009/01/12","extn":"1562","salary":"$86,000"}]}

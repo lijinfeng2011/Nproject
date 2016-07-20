@@ -1,0 +1,11 @@
+#!/home/s/ops/perl/bin/perl
+use Dancer;
+use NSSO;
+use project;
+use project::askforresources;
+use project::allocateresource;
+
+
+set 'log' => 'debug';
+#set apphandler => 'Debug';
+dance;
