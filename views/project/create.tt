@@ -190,79 +190,7 @@ function submitdata(){
                             <option value=""></option>
                             <optgroup label="搜索">
 
-<option>图床</option>           
-<option>快照</option>
-<option>测试</option>
-<option>省流量</option>
 <option>网页搜索</option> 
-<option>移动搜索</option>
-<option>图片搜索</option>
-<option>地图搜索</option>
-<option>问答搜索</option>
-<option>良医搜索</option>
-<option>新闻搜索</option>
-<option>学术搜索</option>
-<option>小说搜索</option>
-<option>雷电搜索</option>
-<option>奇虎搜索</option>
-<option>视频搜索</option>
-<option>数据挖掘</option>
-<option>搜索蜘蛛</option>
-<option>以图搜图</option>
-<option>一级引擎</option>
-<option>二级引擎</option>
-<option>NLP相关</option>
-<option>逛街宝搜索</option>
-<option>搜索Onebox</option>
-<option>网页分析转码</option>
-<option>数据分析</option>
-<option>医疗服务</option>
-<option>WEB平台基础架构</option>
-                            </optgroup>
-                            <optgroup label="安全">
-<option>云查杀</option>
-<option>网盾</option>
-<option>Hips</option>
-<option>专杀</option>
-<option>PC回扫</option>
-<option>手机回扫</option>
-<option>样本存储</option>
-<option>V5</option>
-<option>日志</option>
-<option>上传</option>
-<option>密钥</option>
-<option>安全长链接</option>
-<option>安全VPN</option>
-<option>QVM</option>
-<option>输入法</option>
-<option>安全-其他</option>
-                            </optgroup>
-
-                            <optgroup label="手机安全">
-<option>手机卫士</option>
-<option>云通讯录</option>
-<option>摇一摇</option>
-<option>手机长链接</option>
-<option>minos</option>
-                            </optgroup>
-
-
-                            <optgroup label="广告">
-<option>广告平台</option>
-<option>广告引擎</option>
-<option>广告DMP</option>
-                            </optgroup>
-
-
-                            <optgroup label="北京时间">
-<option>北京时间-新闻</option>
-                            </optgroup>
-
-
-                            <optgroup label="CloudOPS">
-<option>监控</option>
-<option>CDX</option>
-<option>故障过保</option>
                             </optgroup>
 
 <optgroup label="beacon">
