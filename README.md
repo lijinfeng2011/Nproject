@@ -14,9 +14,11 @@
 
 
    2. 在config.yml中设置当前网站的登录地址
+
         loggin_addr: 'http://nproject.nices.net:9999/login'
 
    3. 在config.yml中配置上单点登录系统的地址
+
         sso:
           ref: 'http://login.nides.net:8080/?ref='
           sid: 'http://login.nices.net:8080/info?sid='
