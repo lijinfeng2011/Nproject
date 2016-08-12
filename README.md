@@ -3,6 +3,7 @@
 
 
 使用说明：
+
    1. 在config.yml中把数据库信息配置上
 
         database: 'ns_project'
@@ -12,20 +13,20 @@
         password: 'root'
 
 
-    2. 在config.yml中设置当前网站的登录地址
+   2. 在config.yml中设置当前网站的登录地址
         loggin_addr: 'http://nproject.nices.net:9999/login'
 
-    3. 在config.yml中配置上单点登录系统的地址
+   3. 在config.yml中配置上单点登录系统的地址
         sso:
           ref: 'http://login.nides.net:8080/?ref='
           sid: 'http://login.nices.net:8080/info?sid='
 
-    4. 按照config.yml中配置的路径创建以下目录用于存放session
+   4. 按照config.yml中配置的路径创建以下目录用于存放session
 
         /tmp/ns-dancer-sessions
 
 
-    5. 在数据库中建下面几个表
+   5. 在数据库中建下面几个表
 
         CREATE TABLE `project` (
           `ID` int(64) NOT NULL auto_increment,
@@ -65,5 +66,5 @@
           UNIQUE KEY `name` (`name`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
-    6. 启动服务
+   6. 启动服务
         ./bin/web  -p 8080
