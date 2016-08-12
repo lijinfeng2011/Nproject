@@ -69,4 +69,5 @@
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
    6. 启动服务
+
         ./bin/web  -p 8080
