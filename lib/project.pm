@@ -204,24 +204,19 @@ any '/project/view' => sub {
     return unless $id && $id =~ /^\d+$/;  
 
     my $project = MYDatabase->exe( "select * from project where id=$id" );
-    my $asked = MYDatabase->exe( "select * from askforresources where PROJECTID=$id" );
 
     my ( %res, %grp, %all );
-    if( my @askid = map{ $_->[0] }@$asked )
-    {
-        my $resource = MYDatabase->exe( sprintf "select `ASKID`,`type`,`group`,count( `group` ) from resource where ASKID in ( %s ) group by `group`", join ',', @askid );
-        
-        map{
-            my( $ASKID, $TYPE, $GROUP, $COUNT ) = @$_;
-                $res{$ASKID}{$TYPE}{$GROUP} = $COUNT;
-                $grp{$TYPE}{$GROUP} += $COUNT;
-                $all{$TYPE} += $COUNT;
-        }@$resource;
-    }
+    my $resource = MYDatabase->exe("select `PROJECTID`,`type`,`group`,count( `group` ) from resource where PROJECTID='$id' group by `group`");
+    
+    map{
+        my( $ASKID, $TYPE, $GROUP, $COUNT ) = @$_;
+            $res{$ASKID}{$TYPE}{$GROUP} = $COUNT;
+            $grp{$TYPE}{$GROUP} += $COUNT;
+            $all{$TYPE} += $COUNT;
+    }@$resource;
 
     template 'project/view', +{ 
         project => $project->[0], 
-        asked => $asked,
         resources => +{ res => \%res, grp => \%grp, all => \%all } 
     };
 };
