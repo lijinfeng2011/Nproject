@@ -23,7 +23,7 @@ plugins:
   Database:
     driver: 'mysql'
     database: 'ns_project'
-    host: 'ns_project'
+    host: 'ns-project'
     port: 3306
     username: 'root'
     password: 'root'
