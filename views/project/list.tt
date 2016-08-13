@@ -125,10 +125,10 @@
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="未分配的申请" class="well top-block" href="/project/list_unaskforresources">
+        <a data-toggle="tooltip" title="消息" class="well top-block" href="/project/list">
             <i class="glyphicon glyphicon-envelope red"></i>
 
-            <div>未分配</div>
+            <div>消息</div>
             <div>[% count.askforresources %]</div>
         </a>
     </div>
