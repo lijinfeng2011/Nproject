@@ -128,7 +128,7 @@
             <i class="glyphicon glyphicon-envelope red"></i>
 
             <div>消息</div>
-            <div>[% count.askforresources %]</div>
+            <div>0</div>
         </a>
     </div>
 </div>
