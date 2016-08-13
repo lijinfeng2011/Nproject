@@ -196,14 +196,10 @@ function submitdata(){
                         <select data-placeholder="未知" id="belong" name="belong"  data-rel="chosen">
   <option value ="[% resource.1 %]">[% resource.1 %]</option>
                             <option value=""></option>
-                            <optgroup label="搜索">
 
-<option>网页搜索</option> 
-                            </optgroup>
+[% INCLUDE project/business %]
 
-<optgroup label="beacon">
-<option>beacon</option>
-</optgroup>
+
                         </select>
                     </div>
 

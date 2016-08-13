@@ -188,14 +188,9 @@ function submitdata(){
                     <div class="controls">
                         <select data-placeholder="未知" id="p_belong" name="p_belong"  data-rel="chosen">
                             <option value=""></option>
-                            <optgroup label="搜索">
 
-<option>网页搜索</option> 
-                            </optgroup>
+[% INCLUDE project/business %]
 
-<optgroup label="beacon">
-<option>beacon</option>
-</optgroup>
                         </select>
                     </div>
                   </div>

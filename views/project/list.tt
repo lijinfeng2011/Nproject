@@ -159,14 +159,8 @@
                         <select id="selectError" data-rel="chosen" onchange="t(this)">
                             <option value=""></option>
                             <option value="">全部</option>
-                            <optgroup label="搜索">
 
-<option>网页搜索</option>
-                            </optgroup>
-
-<optgroup label="beacon">
-<option>beacon</option>
-</optgroup>
+[% INCLUDE project/business %]
 
                         </select>
                     </div>
