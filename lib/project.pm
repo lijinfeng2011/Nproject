@@ -91,7 +91,7 @@ any '/project/show_resource_host' => sub {
     my %param = %{request->params};
 
     my $res = MYDatabase->exe( 
-        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='host' and ASKID in ( %s ) %s", $param{project_id} ? "select id from askforresources where PROJECTID='$param{project_id}'":"$param{ask_id}", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
+        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='host' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
     template 'project/show_resource_host', +{ hosts => $res, group_name => $param{group_name} };
@@ -102,20 +102,20 @@ any '/project/show_resource_lvs' => sub {
     my %param = %{request->params};
 
     my $res = MYDatabase->exe( 
-        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='lvs' and ASKID in ( %s ) %s", $param{project_id} ? "select id from askforresources where PROJECTID='$param{project_id}'":"$param{ask_id}", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
+        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='lvs' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
     template 'project/show_resource_lvs', +{ hosts => $res, group_name => $param{group_name} };
 };
 
-any '/project/show_resource_domain' => sub {
+any '/project/show_resource_dns' => sub {
     my %param = %{request->params};
 
     my $res = MYDatabase->exe( 
-        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='domain' and ASKID in ( %s ) %s", $param{project_id} ? "select id from askforresources where PROJECTID='$param{project_id}'":"$param{ask_id}", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
+        sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='dns' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
-    template 'project/show_resource_domain', +{ hosts => $res, group_name => $param{group_name} };
+    template 'project/show_resource_dns', +{ hosts => $res, group_name => $param{group_name} };
 };
 
 
