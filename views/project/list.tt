@@ -199,9 +199,6 @@
         <td><a href='/project/list_hermes?name=[% d.6 %]' >[% d.6 %]</a></td>
         <td>[% d.7 %]</td>
         <td class="center">
-            <a href="/project/askforresources?project_id=[% d.0 %]" title="申请资源">
-                <i class="glyphicon glyphicon-leaf"></i>
-            </a>
             <a href='/project/view?project_id=[% d.0 %]&TB_iframe=true&height=600&width=800' class='thickbox' title="查看">
                 <i class="glyphicon glyphicon-eye-open"></i>
             </a>
@@ -209,19 +206,11 @@
             <a href="/project/allocateresource?project_id=[% d.0 %]" title="分配资源">
                 <i class="glyphicon glyphicon-qrcode"></i>
             </a>
-            <a href="/project/editapp?project_id=[% d.0 %]" title="编辑app">
-                <i class="glyphicon glyphicon-cog"></i>
-            </a>
  
            <a href='/project/editproject_update?id=[% d.0 %]' title="编辑">
             <i class="glyphicon glyphicon-wrench"></i>
           </a>
 
-            <a href='/project/showmonitor?hermes=[% d.6 %]&TB_iframe=true&height=800&width=1000' class='thickbox' title="查看监控">
-            <i class="glyphicon glyphicon-screenshot"></i>
-          </a>
-          <a href='[%settings.cluster_status%][% d.6 %]' target="_blank" title="查看集群状态">
-            <i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
 
         </td>
     </tr>
