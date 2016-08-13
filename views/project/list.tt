@@ -200,15 +200,15 @@
         <td>[% d.7 %]</td>
         <td class="center">
             <a href='/project/view?project_id=[% d.0 %]&TB_iframe=true&height=600&width=800' class='thickbox' title="查看">
-                <i class="glyphicon glyphicon-eye-open"></i>
+                <i class="glyphicon glyphicon-search"></i>
             </a>
  
             <a href="/project/allocateresource?project_id=[% d.0 %]" title="分配资源">
-                <i class="glyphicon glyphicon-qrcode"></i>
+                <i class="glyphicon glyphicon-plus-sign"></i>
             </a>
  
            <a href='/project/editproject_update?id=[% d.0 %]' title="编辑">
-            <i class="glyphicon glyphicon-wrench"></i>
+            <i class="glyphicon glyphicon-cog"></i>
           </a>
 
 
