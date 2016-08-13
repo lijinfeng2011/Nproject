@@ -45,7 +45,7 @@ get '/project/list_hermes' => sub {
     my $hermes = MYDatabase->exe( "select hermes from project where hermes is not null" );
     my %count;
 
-    $count{project} = scalar @$data if $data;
+    $count{project} = scalar @$hermes if $hermes;
 
 
     my $hostcount = MYDatabase->exe( "select count(*) from resource where type='host' or type='lvs' or type='domain' ");
