@@ -3,7 +3,7 @@ use Dancer ':syntax';
 
 our $VERSION = '0.1';
 
-use MYDatabase;
+use MYDB;
 
 use Dancer qw(session debug);
 use FindBin qw( $RealBin );
@@ -18,18 +18,18 @@ get '/' => sub {
 get '/project/list' => sub {
     my %param = %{request->params};
     
-    my $data = MYDatabase->exe( "select project.ID, project.NAME,project.BELONG,project.MEMBER,project.ALARM,project.DESC,project.HERMES,count( node ),project.OPS,project.OPSER,project.DEVER from  project  left join resource on project.ID=resource.PROJECTID  and resource.TYPE='host' group by project.id" );
+    my $data = MYDB->exe( "select project.ID, project.NAME,project.BELONG,project.MEMBER,project.ALARM,project.DESC,project.HERMES,count( node ),project.OPS,project.OPSER,project.DEVER from  project  left join resource on project.ID=resource.PROJECTID  and resource.TYPE='host' group by project.id" );
 
     $data = [ grep{ $_->[2] eq $param{belong}  }@$data ] if( $param{belong} && $data );
 
     my %count;
     $count{project} = scalar @$data if $data;
 
-    my $hostcount = MYDatabase->exe( "select count(*) from resource where type='host'");
+    my $hostcount = MYDB->exe( "select count(*) from resource where type='host'");
     $count{host} = $hostcount->[0][0];
 
 
-    my $user = MYDatabase->exe( "select count(*) from user");
+    my $user = MYDB->exe( "select count(*) from user");
     $count{user} = $user->[0][0];
     template 'project/list', +{ data => $data, count => \%count, belong => $param{belong} };
 };
@@ -40,19 +40,19 @@ get '/project/list_hermes' => sub {
     my $data;
     if( $param{name} && $param{name} =~ /^\w+_\w+_\w+_\w+$/ )
     {
-        $data = MYDatabase->exe( "select ID,`GROUP`,`NODE`,EXTA, EXTB from resource where ( type='host' or type='lvs' or type='domain' )and  projectid in (select id from project where hermes='$param{name}')" );
+        $data = MYDB->exe( "select ID,`GROUP`,`NODE`,EXTA, EXTB from resource where ( type='host' or type='lvs' or type='domain' )and  projectid in (select id from project where hermes='$param{name}')" );
     }
-    my $hermes = MYDatabase->exe( "select hermes from project where hermes is not null" );
+    my $hermes = MYDB->exe( "select hermes from project where hermes is not null" );
     my %count;
 
     $count{project} = scalar @$hermes if $hermes;
 
 
-    my $hostcount = MYDatabase->exe( "select count(*) from resource where type='host' or type='lvs' or type='domain' ");
+    my $hostcount = MYDB->exe( "select count(*) from resource where type='host' or type='lvs' or type='domain' ");
     $count{host} = $hostcount->[0][0];
 
 
-    my $user = MYDatabase->exe( "select count(*) from user");
+    my $user = MYDB->exe( "select count(*) from user");
     $count{user} = $user->[0][0];
     template 'project/list_hermes', +{ data => $data, count => \%count, hermes => $hermes, name => $param{name} };
 };
@@ -60,7 +60,7 @@ get '/project/list_hermes' => sub {
 
 
 get '/project/create' => sub {
-    my $user = MYDatabase->exe( "select zhCN from user" );
+    my $user = MYDB->exe( "select zhCN from user" );
     template 'project/create', +{ users => $user };
 };
 
@@ -75,13 +75,13 @@ any '/project/create_submit' => sub {
     map{ $param{$_} = [$param{$_}] unless ref $param{$_}; }
         qw( p_member p_opser p_dever);
 
-    my $user = MYDatabase->exe( 
+    my $user = MYDB->exe( 
         sprintf "insert into project (`NAME`,`BELONG`,`DESC`, `OPS`,`ALARM`,`MEMBER`,`OPSER`,`DEVER`) values( '%s', '%s','%s','%s','%s','|%s|','|%s|','|%s|')", 
         @param{ qw(p_name p_belong p_desc p_ops )} , $param{p_alarm} ? '1': '0', 
         map{ join( '|', @{$param{$_}}) }qw( p_member p_opser p_dever )
     );
 
-    my $project_id = MYDatabase->exe( "select id from project where name='$param{p_name}'" );
+    my $project_id = MYDB->exe( "select id from project where name='$param{p_name}'" );
 
     redirect "/project/allocateresource?project_id=$project_id->[0][0]";
 };
@@ -90,7 +90,7 @@ any '/project/create_submit' => sub {
 any '/project/show_resource_host' => sub {
     my %param = %{request->params};
 
-    my $res = MYDatabase->exe( 
+    my $res = MYDB->exe( 
         sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='host' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
@@ -101,7 +101,7 @@ any '/project/show_resource_host' => sub {
 any '/project/show_resource_lvs' => sub {
     my %param = %{request->params};
 
-    my $res = MYDatabase->exe( 
+    my $res = MYDB->exe( 
         sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='lvs' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
@@ -111,7 +111,7 @@ any '/project/show_resource_lvs' => sub {
 any '/project/show_resource_dns' => sub {
     my %param = %{request->params};
 
-    my $res = MYDatabase->exe( 
+    my $res = MYDB->exe( 
         sprintf "select `EXTA`,`NODE`,`GROUP` from resource where type='dns' and PROJECTID='$param{project_id}' %s", $param{group_name} ? "and `GROUP`='$param{group_name}'" : ''
     );
 
@@ -139,15 +139,15 @@ any '/project/editproject_update' => sub {
                 $param{$_} = '';
             }
         }qw( member opser dever );
-        MYDatabase->exe( 
+        MYDB->exe( 
             "update project set `NAME`='$param{name}', BELONG='$param{belong}', MEMBER='$param{member}', ALARM='$param{alarm}', `DESC`='$param{desc}',HERMES='$param{hermes}',OPS='$param{ops}',OPSER='$param{opser}',DEVER='$param{dever}' where id=$id" 
         );
     }
 
     my $resource;
-       $resource = MYDatabase->exe( "select `NAME`,`BELONG`,`MEMBER`,`ALARM`,`DESC`,`HERMES`,`OPS`,`OPSER`,`DEVER` from project where id=$id" );
+       $resource = MYDB->exe( "select `NAME`,`BELONG`,`MEMBER`,`ALARM`,`DESC`,`HERMES`,`OPS`,`OPSER`,`DEVER` from project where id=$id" );
 
-    my $user = MYDatabase->exe( "select zhCN from user" );
+    my $user = MYDB->exe( "select zhCN from user" );
 
     my %selected = map{ $_=> 1}grep{ $_ }split '\|', $resource->[0][2] if $resource && $resource->[0][2];
     my %selected_opser = map{ $_=> 1}grep{ $_ }split '\|', $resource->[0][7] if $resource && $resource->[0][7];
@@ -174,7 +174,7 @@ any '/project/edithermes_update' => sub {
     if( $param{group} && $param{node} && $param{hostid} )
     {
         $param{hostname} ||='';
-        $skip = defined MYDatabase->exe( 
+        $skip = defined MYDB->exe( 
             "update resource set `GROUP`='$param{group}', NODE='$param{node}', EXTA='$param{hostid}', EXTB='$param{hostname}' where id=$id" 
         ) ? 1 : 0;
     }
@@ -182,12 +182,12 @@ any '/project/edithermes_update' => sub {
     my $resource;
     if( $param{delete} )
     {
-        $skip = defined MYDatabase->exe( "delete from resource where id=$id" ) ? 1: 0;
+        $skip = defined MYDB->exe( "delete from resource where id=$id" ) ? 1: 0;
          $skip = 1;
     }
     else
     {
-        $resource = MYDatabase->exe( "select `GROUP`,`NODE`,`EXTA`,`EXTB` from resource where id=$id" );
+        $resource = MYDB->exe( "select `GROUP`,`NODE`,`EXTA`,`EXTB` from resource where id=$id" );
     }
 
     template 'project/edithermes_update', +{ 
@@ -203,10 +203,10 @@ any '/project/view' => sub {
     my $id = $param{project_id};
     return unless $id && $id =~ /^\d+$/;  
 
-    my $project = MYDatabase->exe( "select * from project where id=$id" );
+    my $project = MYDB->exe( "select * from project where id=$id" );
 
     my ( %res, %grp, %all );
-    my $resource = MYDatabase->exe("select `PROJECTID`,`type`,`group`,count( `group` ) from resource where PROJECTID='$id' group by `group`");
+    my $resource = MYDB->exe("select `PROJECTID`,`type`,`group`,count( `group` ) from resource where PROJECTID='$id' group by `group`");
     
     map{
         my( $ASKID, $TYPE, $GROUP, $COUNT ) = @$_;

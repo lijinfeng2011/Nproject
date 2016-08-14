@@ -1,4 +1,4 @@
-package MYDatabase;
+package MYDB;
 
 use strict;
 use warnings;
