@@ -6,6 +6,7 @@ use utf8;
 
 use Dancer qw(session debug error );
 use Dancer::Plugin::Database;
+use utf8;
 
 sub exe
 {
