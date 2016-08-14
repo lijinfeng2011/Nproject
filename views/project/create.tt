@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--
-        ===
-        This comment should NOT be removed.
-
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
     <meta charset="utf-8">
     <title>Nproject</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -168,15 +154,11 @@ function submitdata(){
 
 <form role="form" id="formid" name= "myform" method = 'post' action = 'create_submit' >
                 <div class="alert alert-info">
-
-                           <br><label class="control-label" for="inputSuccess4">运维:</label>
-
-                           <div class="controls">
-                        <select data-placeholder="未知" id="p_ops" name="p_ops"  data-rel="chosen" style="width:150px;">
-                            <option>cloudops</option>
-                            <option>noops</option>
-                        </select>
-                         </div>
+                     <br><label class="control-label" for="inputSuccess4">运维归属</label>
+                     <select data-placeholder="未知" id="p_ops" name="p_ops"  data-rel="chosen" style="width:150px;">
+                         <option>sre</option>
+                         <option>noops</option>
+                     </select>
 
 </div>
                 <div class="alert alert-info">
@@ -185,14 +167,12 @@ function submitdata(){
 
                     <label class="control-label" for="p_belong">项目归属</label>
 
-                    <div class="controls">
                         <select data-placeholder="未知" id="p_belong" name="p_belong"  data-rel="chosen">
                             <option value=""></option>
 
 [% INCLUDE project/business %]
 
                         </select>
-                    </div>
                   </div>
                 </div>
  
@@ -201,36 +181,30 @@ function submitdata(){
 
 
                      <label class="control-label" for="p_member">项目组成员</label>
-                     <div class="controls">
-                         <select id="p_member" name="p_member" multiple class="form-control" data-rel="chosen">
-                             [% FOREACH user = users %]
-                             <option>[% user.0 %]</option>
-                             [% END %]
-                         </select>
-                     </div>
-
+                     <select id="p_member" name="p_member" multiple class="form-control" data-rel="chosen">
+                         [% FOREACH user = users %]
+                         <option>[% user.0 %]</option>
+                         [% END %]
+                     </select>
+                     <br>
                      <label class="control-label" for="p_opser">运维接口人</label>
-                     <div class="controls">
-                         <select id="p_opser" name="p_opser" multiple class="form-control" data-rel="chosen">
-                             [% FOREACH user = users %]
-                             <option>[% user.0 %]</option>
-                             [% END %]
-                         </select>
-                     </div>
+                     <select id="p_opser" name="p_opser" multiple class="form-control" data-rel="chosen">
+                         [% FOREACH user = users %]
+                         <option>[% user.0 %]</option>
+                         [% END %]
+                     </select>
+                     <br>
 
                      <label class="control-label" for="p_dever">项目负责人</label>
-                     <div class="controls">
-                         <select id="p_dever" name="p_dever" multiple class="form-control" data-rel="chosen">
-                             [% FOREACH user = users %]
-                             <option>[% user.0 %]</option>
-                             [% END %]
-                         </select>
-                     </div>
+                     <select id="p_dever" name="p_dever" multiple class="form-control" data-rel="chosen">
+                         [% FOREACH user = users %]
+                         <option>[% user.0 %]</option>
+                         [% END %]
+                     </select>
+                     <br>
 
                    </div>
                  </div>
-                <br>
-
 
                <div class="alert alert-danger">
                     <strong>是否接收报警</strong>
