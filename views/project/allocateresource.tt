@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--
-        ===
-        This comment should NOT be removed.
-
-        Charisma v2.0.0
-
-        Copyright 2012-2014 Muhammad Usman
-        Licensed under the Apache License v2.0
-        http://www.apache.org/licenses/LICENSE-2.0
-
-        http://usman.it
-        http://twitter.com/halalit_usman
-        ===
-    -->
     <meta charset="utf-8">
     <title>Nproject</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,12 +168,29 @@ function submitdata(){
 
                 </div>
                 </div>
-                 <a href="allocateresource_host?project_id=[% projectid %]" >host</a>|
-                <a href="allocateresource_lvs?project_id=[% projectid %]" >lvs</a>|
-<a href='/project/allocateresource_domain?project_id=[% projectid %]&TB_iframe=true&height=400&width=700' class='thickbox'>dns</a>
- 
 
             </div>
+
+
+
+
+
+
+
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-plus-sign"></i>添加资源</h2>
+            </div>
+            <div class="box-content">
+                <div class="alert alert-info">
+
+                    <a href="allocateresource_host?project_id=[% projectid %]" title="点击添加机器资源" data-toggle="tooltip" class="btn btn-warning">host</a>
+                    <a href="allocateresource_lvs?project_id=[% projectid %]" title="点击添加lvs资源" data-toggle="tooltip" class="btn btn-warning">lvs</a>
+                    <a href="/project/allocateresource_dns?project_id=[% projectid %]&TB_iframe=true&height=400&width=700" title="点击添加dns资源" data-toggle="tooltip" class='thickbox'>dns</a>
+
+                </div>
+
+            </div>
+ 
         </div>
     </div>
     <!--/span-->
