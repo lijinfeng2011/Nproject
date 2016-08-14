@@ -4,7 +4,6 @@ use Dancer ':syntax';
 use Data::Dumper;
 use LWP::UserAgent;
 use JSON qw( decode_json );
-
 use Dancer qw(cookie debug);
 use Sign;
 
@@ -28,7 +27,6 @@ get '/login' => sub{
 
     return redirect config->{sso}{'ref'}.config->{'loggin_addr'} 
         unless $re && $re->is_success && $info && $info->{user};
-
     
     session user => $info->{user};
     Sign::login( $info->{user}, request );
@@ -41,6 +39,5 @@ any ['get', 'post'] => '/logout' => sub {
     session->destroy;
     redirect '/';
 };
-
 
 true;
