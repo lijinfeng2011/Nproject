@@ -98,7 +98,7 @@
 <br>
 <div class=" row">
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="分配的机器次" class="well top-block" href="#">
+        <a data-toggle="tooltip" title="成员" class="well top-block" href="#">
             <i class="glyphicon glyphicon-user blue"></i>
 
             <div>成员</div>
@@ -107,7 +107,7 @@
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="项目总数" class="well top-block" href="#">
+        <a data-toggle="tooltip" title="项目" class="well top-block" href="#">
             <i class="glyphicon glyphicon-star green"></i>
 
             <div>项目</div>
@@ -116,7 +116,7 @@
     </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="被分配的申请" class="well top-block" href="#">
+        <a data-toggle="tooltip" title="机器" class="well top-block" href="#">
             <i class="glyphicon glyphicon-briefcase yellow"></i>
 
             <div>机器</div>
@@ -153,7 +153,11 @@
 
 
            <div class="control-group">
-                    <label class="control-label" for="selectError">项目归属:([% belong %])</label>
+                    <label class="control-label" for="selectError">
+                        
+                        项目归属: [% IF belong %] ([% belong %]) [% END %]
+                    
+                    </label>
 
                     <div class="controls">
                         <select id="selectError" data-rel="chosen" onchange="t(this)">
