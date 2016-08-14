@@ -155,8 +155,8 @@
 		                }
 				}
 				
-				if ($("#domain_value").val() == "") {
-                     alertMessage($("#domain_value"), "业务名不能为空.\n");
+				if ($("#dns_value").val() == "") {
+                     alertMessage($("#dns_value"), "业务名不能为空.\n");
                     return false;
                 }
 				var rsip = $("#rsip").val().split("\n");
@@ -352,7 +352,7 @@
 									<legend style="color:#555;">域名分配</legend> 
 									<div class="field-group" style="margin-bottom:20px;">
                                         <label class="required title" for="checker" style="margin-right:19px;"><font color=red>*</font>域名类型：</label>
-                                        <select name='domain_type' class="medium-140" id="domain_type">
+                                        <select name='dns_type' class="medium-140" id="dns_type">
                                         	<option value="dns">dns</option>
 	                                        <option value="qdns" >qdns</option>
                                         </select>
@@ -365,7 +365,7 @@
  
 										<span class="required title" style="margin-left:40px;margin-right:10px;"><b><font color=red>*</font>域名：</b></span>
 	                                   <span class="details"><a title="填写域名,可以用range表示多个域名">
-									    <input type="text" name="domain_value" class="large" id="domain_value" value=""/> 
+									    <input type="text" name="dns_value" class="large" id="dns_value" value=""/> 
 
 										</a></span> 
 

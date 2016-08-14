@@ -71,3 +71,6 @@
    6. 启动服务
 
         ./bin/web  -p 8080
+
+依赖：
+    NS::Hermes 用于做range操作， 参见：https://github.com/nices/NiceS

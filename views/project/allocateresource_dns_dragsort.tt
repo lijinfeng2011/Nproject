@@ -222,7 +222,7 @@ function submitdata(){
 
 
         <hr>  
-<form role="form" id="formid" name= "myform" method = 'post' action = 'allocateresource_domain_dragsort_insert' >
+<form role="form" id="formid" name= "myform" method = 'post' action = 'allocateresource_dns_dragsort_insert' >
 
     <input type="hidden" id="hosts" name="hosts"/>
     <input type="hidden" id="project_id" name="project_id" value="[% project_id %]" />

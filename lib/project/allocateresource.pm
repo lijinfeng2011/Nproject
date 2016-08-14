@@ -55,7 +55,7 @@ any '/project/allocateresource_lvs' => sub {
     template 'project/allocateresource_lvs', +{ project => $project->[0] };
 };
 
-any '/project/allocateresource_domain' => sub {
+any '/project/allocateresource_dns' => sub {
     my %param = %{request->params};
     my $id = $param{project_id};
     return unless $id && $id =~ /^\d+$/;  
@@ -78,7 +78,7 @@ any '/project/allocateresource_domain' => sub {
         } sort @domain_value;
     }
 
-    template 'project/allocateresource_domain', +{ projectid => $id, skip => $skip };
+    template 'project/allocateresource_dns', +{ projectid => $id, skip => $skip };
 };
 
 
