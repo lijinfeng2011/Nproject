@@ -15,7 +15,7 @@
 
    2. 在config.yml中设置当前网站的登录地址
 
-        loggin_addr: 'http://nproject.nices.net:9999/login'
+        loggin_addr: 'http://nproject.nices.net:8000/login'
 
    3. 在config.yml中配置上单点登录系统的地址
 
@@ -45,7 +45,7 @@
           PRIMARY KEY  (`ID`),
           UNIQUE KEY `NAME` (`NAME`),
           UNIQUE KEY `HERMES` (`HERMES`)
-        ) ENGINE=InnoDB AUTO_INCREMENT=606 DEFAULT CHARSET=utf8 
+        ) ENGINE=InnoDB AUTO_INCREMENT=606 DEFAULT CHARSET=utf8;
         
         CREATE TABLE `resource` (
           `ID` int(64) NOT NULL auto_increment,
@@ -57,7 +57,7 @@
           `EXTB` varchar(100) default NULL,
           PRIMARY KEY  (`ID`),
           UNIQUE KEY `itne` (`PROJECTID`,`TYPE`,`GROUP`,`NODE`)
-        ) ENGINE=InnoDB AUTO_INCREMENT=30933 DEFAULT CHARSET=utf8 
+        ) ENGINE=InnoDB AUTO_INCREMENT=30933 DEFAULT CHARSET=utf8; 
         
         CREATE TABLE `user` (
           `name` varchar(100) default NULL,
@@ -66,7 +66,7 @@
           `alarm` varchar(100) default NULL,
           `status` varchar(100) default NULL,
           UNIQUE KEY `name` (`name`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
    6. 启动服务
 
