@@ -9,6 +9,8 @@ use FindBin qw( $RealBin );
 my %md5 = ( 'time' => time );
 our $path = "$RealBin/../data/curr";
 
+get '/mon' => sub { return 'ok'; };
+
 get '/cache/data_md5' => sub {
     my  $time = time;
 
