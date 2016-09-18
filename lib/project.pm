@@ -11,6 +11,8 @@ use MIME::Base64;
 use Data::Dumper;
 use NS::Util::OptConf;
 
+get '/mon' => sub { return 'ok'; };
+
 get '/' => sub {
     redirect '/project/list';
 };
