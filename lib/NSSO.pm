@@ -10,7 +10,10 @@ use Sign;
 our $VERSION = '0.1';
 
 hook 'before' => sub {
-    redirect '/login' if ! session('user') && request->path_info !~ m{^/login};
+    if( request->path_info !~ m{^/mon} )
+    {
+        redirect '/login' if ! session('user') && request->path_info !~ m{^/login};
+    }
 };
 
 get '/login' => sub{
